@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kotak Saran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="stampbox">Untuk semua tim &middot; tanpa nama</span>
+    <h1 class="title">Kotak <em>saran</em></h1>
+    <p class="sub">Punya masukan soal kantor, kerjaan, atau apa saja? Tulis di sini. Tidak ada nama yang tersimpan kecuali kamu isi sendiri.</p>
+  </header>
+
+  <div class="card" id="formCard">
+    <div class="form-body" id="formBody">
+      <p class="section-label">Pilih kategori</p>
+      <div class="chips" id="categoryChips"></div>
+
+      <label class="field-label" for="message">Masukanmu</label>
+      <textarea id="message" placeholder="Tulis di sini&hellip; sedetail atau sesingkat yang kamu mau." maxlength="1200"></textarea>
+      <p class="helper" id="charCount">0 / 1200</p>
+
+      <label class="field-label" for="nameInput">Nama (opsional)</label>
+      <input type="text" id="nameInput" placeholder="Kosongkan kalau mau kirim anonim" maxlength="60">
+
+      <button class="btn btn-primary" id="submitBtn" type="button">Kirim masukan</button>
+      <p class="status-msg" id="statusMsg"></p>
+
+      <div class="privacy-note">
+        <span>&#128274;</span>
+        <span>Masukan dikirim tanpa identitas kecuali kamu menuliskan namamu sendiri di atas, dan tersimpan langsung ke Google Sheet tim.</span>
+      </div>
+    </div>
+
+    <div class="success" id="successView">
+      <div class="mark">&#10003;</div>
+      <h3>Masukan terkirim</h3>
+      <p>Terima kasih sudah meluangkan waktu untuk menulis.</p>
+      <button class="btn btn-ghost" id="againBtn" type="button">Kirim masukan lain</button>
+    </div>
+  </div>
+
+  <p class="footer-count" id="footerCount"></p>
+
+  <div class="admin-toggle-row">
+    <button class="btn btn-ghost btn-small" id="adminToggleBtn" type="button">Panel admin</button>
+  </div>
+
+  <div class="card admin-panel" id="adminPanel">
+    <div class="admin-lock" id="adminLock">
+      <p class="section-label">Masukkan PIN admin</p>
+      <div class="add-cat-row">
+        <input type="password" id="adminPinInput" placeholder="PIN" inputmode="numeric" maxlength="12">
+        <button class="btn btn-ghost btn-small" id="adminPinBtn" type="button">Masuk</button>
+      </div>
+      <p class="helper">PIN default: <code>admin123</code> &mdash; ganti di <code>script.js</code> (lihat README).</p>
+    </div>
+
+    <div class="admin-content" id="adminContent" style="display:none;">
+      <div class="admin-head">
+        <h2>Semua masukan</h2>
+        <span class="count-pill" id="adminCountPill"></span>
+      </div>
+
+      <p class="section-label" style="margin-top:14px;">Kelola kategori</p>
+      <div class="chips" id="manageCatChips"></div>
+      <div class="add-cat-row">
+        <input type="text" id="adminNewCatInput" placeholder="Tambah kategori&hellip;" maxlength="30">
+        <button class="btn btn-ghost btn-small" id="adminAddCatBtn" type="button">Tambah</button>
+      </div>
+
+      <p class="section-label" style="margin-top:24px;">Saring berdasarkan kategori</p>
+      <div class="filter-row" id="filterRow"></div>
+
+      <div id="entriesList"></div>
+      <p class="empty-note" id="emptyNote" style="display:none;">Belum ada masukan pada kategori ini.</p>
+
+      <div class="admin-foot-actions">
+        <button class="btn btn-ghost btn-small" id="refreshBtn" type="button">Muat ulang</button>
+        <button class="btn btn-ghost btn-small" id="exportBtn" type="button">Unduh semua </button>
+        <button class="btn btn-ghost btn-small danger" id="clearAllBtn" type="button">Hapus semua data</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
